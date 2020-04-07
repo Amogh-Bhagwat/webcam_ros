@@ -8,7 +8,7 @@ using namespace std;
 using namespace cv;
 
 void webcam_callback(const sensor_msgs::Image::ConstPtr& msg){
-  ROS_INFO("Got frame from webcam");
+  // ROS_INFO("Got frame from webcam");
   cv_bridge::CvImagePtr cv_ptr;
   cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
   imshow("Webcam Display Window", cv_ptr->image);
