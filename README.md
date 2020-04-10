@@ -12,7 +12,7 @@ Usage for subscriber -
 
 Usage for service -
 
-    rosrun webcam_ros image_saver_server _filename:=filename.jpg
+    rosrun webcam_ros image_processing_server _filename:=filename.jpg
 
 %04i can be used for numbering of image
 
