@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(webcam_ros)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -60,6 +60,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_service_files(
    FILES
    cropImage.srv
+   saveImage.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -73,6 +74,7 @@ add_service_files(
 generate_messages(
    DEPENDENCIES
    std_msgs
+   sensor_msgs
 )
 
 ################################################
@@ -218,3 +220,11 @@ target_link_libraries(webcam_sub ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 add_executable(image_processing_server src/image_processing.cpp)
 target_link_libraries(image_processing_server ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 add_dependencies(image_processing_server webcam_ros_generate_messages_cpp)
+
+add_executable(image_save_client src/image_save_client.cpp)
+target_link_libraries(image_save_client ${catkin_LIBRARIES})
+add_dependencies(image_save_client webcam_ros_generate_messages_cpp)
+
+add_executable(image_crop_client src/image_crop_client.cpp)
+target_link_libraries(image_crop_client ${catkin_LIBRARIES})
+add_dependencies(image_crop_client webcam_ros_generate_messages_cpp)

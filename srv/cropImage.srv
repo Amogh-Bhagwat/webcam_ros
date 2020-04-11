@@ -1,3 +1,5 @@
-int64 width
-int64 height
+int32 width
+int32 height
 ---
+sensor_msgs/Image image
+bool success
