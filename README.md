@@ -12,8 +12,10 @@ Usage for subscriber -
 
 Usage for service -
 
-    rosrun webcam_ros image_processing_server _filename:=filename.jpg
+    rosrun webcam_ros image_processing_server
 
-%04i can be used for numbering of image
+For running clients -
 
-%s can be used for default image type (default type = .jpg)
+    rosrun webcam_ros image_save_client _filename:=your_file_name _capture_fps:=capture_fps _capture_duration:=capture_duration
+
+    rosrun webcam_ros image_crop_client _filename:=your_file_name _width:=width _height:=height
