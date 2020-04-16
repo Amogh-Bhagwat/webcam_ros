@@ -14,6 +14,8 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   cv_bridge
   message_generation
+  actionlib
+  actionlib_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -64,17 +66,17 @@ add_service_files(
 )
 
 ## Generate actions in the 'action' folder
-# add_action_files(
-#   FILES
-#   Action1.action
-#   Action2.action
-# )
+add_action_files(
+   DIRECTORY action
+   FILES Blur.action
+)
 
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
    DEPENDENCIES
    std_msgs
    sensor_msgs
+   actionlib_msgs
 )
 
 ################################################
@@ -109,7 +111,7 @@ generate_messages(
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES webcam_ros
-  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime sensor_msgs cv_bridge
+  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime sensor_msgs cv_bridge actionlib_msgs
   ## DEPENDS system_lib
 )
 
@@ -228,3 +230,7 @@ add_dependencies(image_save_client webcam_ros_generate_messages_cpp)
 add_executable(image_crop_client src/image_crop_client.cpp)
 target_link_libraries(image_crop_client ${catkin_LIBRARIES})
 add_dependencies(image_crop_client webcam_ros_generate_messages_cpp)
+
+add_executable(blur_server src/blur_server.cpp)
+target_link_libraries(blur_server ${catkin_LIBRARIES})
+add_dependencies(blur_server ${webcam_ros_EXPORTED_TARGETS})

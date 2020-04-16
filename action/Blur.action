@@ -1,0 +1,9 @@
+# Goal definition
+int32 duration
+---
+# Result definition
+int32 total_frames_processed
+---
+# Feedback definition
+sensor_msgs/Image image
+int32 frame_number
