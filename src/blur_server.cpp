@@ -28,6 +28,8 @@ public:
   }
   // TODO: Define Callbacks
   void goalCB(){
+    ROS_INFO("Got new Goal");
+    _total_processed = 0;
     // accept the goal
     _start_time = ros::Time::now();
     _duration = _server.acceptNewGoal()->duration;
@@ -45,7 +47,7 @@ public:
     if(!_server.isActive()){
       return;
     }
-    if (ros::ok() && ros::Time::now() < _end_time){
+    if (ros::Time::now() < _end_time){
       // get cvImage from ros message
       _feedback.frame_number = _total_processed;
       _total_processed++;
@@ -80,6 +82,5 @@ int main(int argc, char **argv){
   ros::init(argc, argv, "blur_server");
   BlurAction blur_action("blur_operation");
   ros::spin();
-
   return 0;
 }
