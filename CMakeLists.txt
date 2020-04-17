@@ -234,3 +234,7 @@ add_dependencies(image_crop_client webcam_ros_generate_messages_cpp)
 add_executable(blur_server src/blur_server.cpp)
 target_link_libraries(blur_server ${catkin_LIBRARIES})
 add_dependencies(blur_server ${webcam_ros_EXPORTED_TARGETS})
+
+add_executable(blur_client src/blur_action_client.cpp)
+target_link_libraries(blur_client ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+add_dependencies(blur_client ${webcam_ros_EXPORTED_TARGETS})

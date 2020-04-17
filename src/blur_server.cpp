@@ -78,7 +78,7 @@ protected:
 
 int main(int argc, char **argv){
   ros::init(argc, argv, "blur_server");
-  BlurAction blur_action(ros::this_node::getName());
+  BlurAction blur_action("blur_operation");
   ros::spin();
 
   return 0;
