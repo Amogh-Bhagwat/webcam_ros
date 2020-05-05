@@ -10,6 +10,11 @@ Usage for subscriber -
 
     rosrun webcam_ros webcam_sub
 
+Usage for action server and client -
+
+    rosrun webcam_ros blur_server
+    rosrun webcam_ros blur_client _duration:=capture_duration
+
 Usage for service -
 
     rosrun webcam_ros image_processing_server
